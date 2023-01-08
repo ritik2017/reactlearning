@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom/client';
 import Head from './Head';
 import Foot from './Foot';
 import Comp1 from './Comp1';
-import Counter from './Counter';
+import Counter, { AutoCounter, AutoCounter2 } from './Counter';
+import Effect from './Effect';
 
 function Button(props) {  
   console.log(props);
@@ -37,5 +38,8 @@ root.render(
     <Comp1></Comp1>
     <Foot></Foot>
     <Counter/>
+    <AutoCounter/>
+    <Effect/>
+    <AutoCounter2/>
   </div>
 );

@@ -16,6 +16,10 @@
 // Examples - useState, useEffect, useReducer, useMemo, useCallback, useContext, useRef
 
 // useState -> Gives us a variable and a function. Any component using this variable will re-render on its change by the function.
+// useEffect -> This is a function. This runs on three occasions:
+            // a. Mounting - Component is created in DOM for the first time -> Pass an empty dependency array
+            // b. Updation - Either when we update the state or the props -> Pass the state in dependency array
+            // c. Unmounting - Removing the component from the DOM
 
 // 1. Always create file with component name 
 // 2. Export component as default export 
