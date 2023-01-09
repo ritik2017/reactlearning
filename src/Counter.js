@@ -82,3 +82,6 @@ export function AutoCounter2() {
         </div>
     )
 }
+
+// Form using react
+// Name, email, password, username 

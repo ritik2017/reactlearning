@@ -12,6 +12,10 @@
 // Props -> Values that we pass to the components
 // State -> Values we create inside components. Whenever these values change the components using them rerender
 
+// Components -> Small peices of DOM
+// 1. Class Components
+// 2. Functional Components
+
 // React Hook -> Functions that react provide us to make our functional component more powerful
 // Examples - useState, useEffect, useReducer, useMemo, useCallback, useContext, useRef
 
