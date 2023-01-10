@@ -1,9 +1,34 @@
 import React from "react";
 
-export function CompText(props) {
-    return (
-        <p>{props.text}</p>
-    )
+// export function CompText(props) {
+//     return (
+//         <p>{props.text}</p>
+//     )
+// }
+
+class CompText extends React.Component{
+    constructor(props) {
+        console.log("Contructor called");
+        super(props);
+    }
+
+    // shouldComponentUpdate() {
+    //     return false;
+    // }
+
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        console.log(prevProps, prevState);
+    }
+
+    componentDidUpdate() {
+        console.log("Hello");
+    }
+
+    render() {
+        return (
+            <p>{this.props.text}</p>
+        )
+    }
 }
 
 export default function Comp1() {

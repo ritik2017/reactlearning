@@ -33,3 +33,7 @@
 
 // Props are immutable - Do not update props inside component 
 // States are mutable - We should always change state using setter methods
+
+// Static methods
+// 1. No copy of them is created in memory 
+// 2. We do not need objects to call this class function

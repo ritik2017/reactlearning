@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom/client';
 
 // import Head from './Head';
 // import Foot from './Foot';
-// import Comp1 from './Comp1';
+import Comp1 from './Comp1';
 // import Counter, { AutoCounter, AutoCounter2 } from './Counter';
 // import Effect from './Effect';
-import Class1 from './Class1';
+// import Class1 from './Class1';
 
 // function Button(props) {  
 //   console.log(props);
@@ -42,7 +42,8 @@ root.render(
     <AutoCounter/>
     <Effect/>
     <AutoCounter2/> */}
-    <Class1 text="Hello from class component"></Class1>
-    <Class1 text="Hello from class component 2"></Class1>
+    {/* <Class1 text="Hello from class component" s1={100}></Class1>
+    <Class1 text="Hello from class component 2"></Class1> */}
+    <Comp1></Comp1>
   </div>
 );
