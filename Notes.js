@@ -37,3 +37,7 @@
 // Static methods
 // 1. No copy of them is created in memory 
 // 2. We do not need objects to call this class function
+
+// Conditional Render - Redering a react component or html element based on a value
+// 1. {props.completed ? <span>completed</span> : <></>}
+// 2. {props.completed && <span>completed</span>}
