@@ -9,9 +9,17 @@ export default class Class1 extends React.Component {
         console.log("Hello contructor");
         super(props); // Why we pass it??
         this.state = {
-            value: 100,
+            value: t,
             count: 0
         }
+        this.value = this.timeTakingFuntion(0);
+    }
+
+    timeTakingFuntion(num) {
+        for(let i = 0; i < 1000000000; i = i + 1) {
+            num = num + 1;
+        }
+        return num;
     }
 
     updateCount = () => {
@@ -40,10 +48,19 @@ export default class Class1 extends React.Component {
     componentDidMount() {
         console.log("Hello from did mount");
     }
+
+    // getSnapshotBeforeUpdate(prevProps, prevState) {
+    //     if(prevState.tasks !== this.state.tasks) {
+
+    //     }
+    // }
+
+    // componentDidUpdate() {
+        
+    // }
     
     render() {
-        console.log("Hello render");
-        console.log(this.state);
+        this.value = this.timeTakingFuntion(this.state.count);
         return (
             <div>
                 <p>{this.props.text}</p>

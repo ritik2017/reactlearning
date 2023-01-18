@@ -3,17 +3,42 @@ import React from "react";
 import CreateTask from "./CreateTask";
 import Task from "./Task";
 
+// let value = 0;
+
 export default function Todo() {
-    const [tasks, setTasks] = React.useState([
-        {
-            title: "Go for a walk",
-            completed: true
-        },
-        {
-            title: "Read Books",
-            completed: false
-        }
-    ])
+    const [tasks, setTasks] = React.useState([]);
+    const [count, setCount] = React.useState(0);
+    
+    // React.useEffect(() => {
+    //     value = timeTakingFuntion(count);
+    // }, [count]);
+
+    const value = React.useMemo(() => {
+        console.log("Running use memo");
+        return timeTakingFuntion(count);
+    }, [count]);
+    
+    console.log(value, count);
+
+    function countPendingTodo() {
+        let ct = 0;
+        tasks.forEach(task => {
+            if(!task.completed) {
+                ct = ct + 1;
+            }
+        })
+        return ct;
+    }
+
+    React.useEffect(() => {
+        let t = localStorage.getItem('tasks');
+        t = JSON.parse(t);
+        setTasks(() => t);
+    }, []);
+
+    React.useEffect(() => {
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }, [tasks]);
 
     function addTask(task) {
         setTasks(tasks => {
@@ -22,6 +47,7 @@ export default function Todo() {
                 task
             ]
         })
+        setCount((count) => count + 1);
     }
 
     function removeTask(index) {
@@ -49,9 +75,16 @@ export default function Todo() {
                 <CreateTask addTask={addTask}/>
             </div>
             <div className="pending-todo">
-                <h2>Pending Todos</h2>
+                <h2>Pending Todos {countPendingTodo()}</h2>
                 {tasks.map((task, index) => <Task {...task} key={index} index={index} updateTask={updateTask} removeTask={removeTask}/> )}
             </div>
         </div>
     )
+}
+
+function timeTakingFuntion(num) {
+    for(let i = 0; i < 1000000000; i = i + 1) {
+        num = num + 1;
+    }
+    return num;
 }

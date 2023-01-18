@@ -25,6 +25,11 @@
             // b. Updation - Either when we update the state or the props -> Pass the state in dependency array
             // c. Unmounting - Removing the component from the DOM
 
+// useMemo -> Returns a value after calculation. This runs before render. Can be used to do calculation 
+// and store the returned value.
+// a. Mounting - Component is created in DOM for the first time -> Pass an empty dependency array
+// b. Updation - Either when we update the state or the props -> Pass the state in dependency array
+
 // 1. Always create file with component name 
 // 2. Export component as default export 
 
