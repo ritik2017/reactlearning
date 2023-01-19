@@ -2,10 +2,10 @@
 
 import React from "react";
 
-export default function Task(props) {
+function Task(props) {
+    console.log("Hello from task");
 
     React.useEffect(() => {
-        console.log("Task mounted");
         return () => {
             console.log("Task unmounted");
         }
@@ -39,3 +39,5 @@ export default function Task(props) {
         </div>
     )
 }
+
+export default React.memo(Task);

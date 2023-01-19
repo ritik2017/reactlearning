@@ -1,6 +1,8 @@
 import React from "react";
 
-export default function CreateTask(props) {
+function CreateTask(props) {
+
+    console.log("Hello from create task");
 
     let [value, setValue] = React.useState("");
 
@@ -20,3 +22,5 @@ export default function CreateTask(props) {
         </form>
     )
 }
+
+export default React.memo(CreateTask);

@@ -5,6 +5,11 @@ import Task from "./Task";
 
 // let value = 0;
 
+const Display = React.memo((props) => {
+    console.log("Hello from display");
+    return (<p>{props.count}</p>);
+});
+
 export default function Todo() {
     const [tasks, setTasks] = React.useState([]);
     const [count, setCount] = React.useState(0);
@@ -14,11 +19,8 @@ export default function Todo() {
     // }, [count]);
 
     const value = React.useMemo(() => {
-        console.log("Running use memo");
         return timeTakingFuntion(count);
     }, [count]);
-    
-    console.log(value, count);
 
     function countPendingTodo() {
         let ct = 0;
@@ -40,25 +42,24 @@ export default function Todo() {
         localStorage.setItem('tasks', JSON.stringify(tasks));
     }, [tasks]);
 
-    function addTask(task) {
+    const addTask = React.useCallback((task) => {
         setTasks(tasks => {
             return [
                 ...tasks,
                 task
             ]
         })
-        setCount((count) => count + 1);
-    }
+    }, []);
 
-    function removeTask(index) {
+    const removeTask = React.useCallback((index) => {
         setTasks(tasks => {
             const newTasks = [...tasks];
             newTasks.splice(index, 1);
             return newTasks;
         })
-    }
+    }, []);
 
-    function updateTask(index) {
+    const updateTask = React.useCallback((index) => {
         setTasks(tasks => {
             // tasks[index].completed = true;
             // return tasks;
@@ -67,17 +68,24 @@ export default function Todo() {
 
             return newTasks;
         })
+    }, []);
+
+    function handleIncreaseCount() {
+        console.log(value);
+        setCount((count) => count + 1);
     }
 
     return (
         <div className="todo-container">
             <div className="create-todo">
                 <CreateTask addTask={addTask}/>
+                <button onClick={handleIncreaseCount}>Increase count</button>
             </div>
             <div className="pending-todo">
                 <h2>Pending Todos {countPendingTodo()}</h2>
                 {tasks.map((task, index) => <Task {...task} key={index} index={index} updateTask={updateTask} removeTask={removeTask}/> )}
             </div>
+            <Display count={count}></Display>
         </div>
     )
 }
