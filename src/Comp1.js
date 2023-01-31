@@ -26,7 +26,7 @@ import React from "react";
         //     }
         // }
 
-export function CompText(props) {
+export const CompText = React.memo((props) => {
 
     console.log("child render");
     props.fun();
@@ -34,7 +34,7 @@ export function CompText(props) {
     return (
         <p>{props.text}</p>
     )
-}
+});
 
 export default function Comp1() {
     // text - state

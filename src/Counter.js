@@ -49,6 +49,10 @@ export function AutoCounter() {
 export function AutoCounter2() {
     let [count, setCount] = React.useState(0);
 
+    const res = React.useMemo(() => {
+        return fetch('http://api.github.com/users');
+    }, []);
+
     const startCounter = () => {
         let interval = setInterval(() => {
             setCount((count) => count + 1)
@@ -79,6 +83,7 @@ export function AutoCounter2() {
             <button className="start_button" onClick={startCounter}>Start Counter</button>
             <button className="stop_button">Stop Counter</button>
             <button className="reset_button">Reset Counter</button>
+            <div>{res.data}</div>
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import Todo from './TodoFuncComp/Todo';
+// import Todo from './TodoFuncComp/Todo';
 
 // import Head from './Head';
 // import Foot from './Foot';
@@ -7,6 +7,7 @@ import Todo from './TodoFuncComp/Todo';
 // import Counter, { AutoCounter, AutoCounter2 } from './Counter';
 // import Effect from './Effect';
 // import Class1 from './Class1';
+import RefComp from './RefComp';
 
 // function Button(props) {  
 //   console.log(props);
@@ -32,7 +33,9 @@ import Todo from './TodoFuncComp/Todo';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Todo></Todo>
+  // <Todo></Todo>
+  // <Comp1></Comp1>
+  <RefComp/>
 );
 
 // {/* <Head></Head>

@@ -24,7 +24,7 @@
             // a. Mounting - Component is created in DOM for the first time -> Pass an empty dependency array
             // b. Updation - Either when we update the state or the props -> Pass the state in dependency array
             // c. Unmounting - Removing the component from the DOM
-
+            // d. Any re-render of component -> Do not need to pass any dependency array
 // useMemo -> Returns a value after calculation. This runs before render. Can be used to do calculation 
 // and store the returned value.
 // a. Mounting - Component is created in DOM for the first time -> Pass an empty dependency array
@@ -34,6 +34,9 @@
 // and store the returned value.
 // a. Mounting - Component is created in DOM for the first time -> Pass an empty dependency array
 // b. Updation - Either when we update the state or the props -> Pass the state in dependency array
+
+//useRef -> 1. Can have an initial value initialized during mounting of component. Does not trigger re-render of component on updation
+            // updates itself in UI.
 
 // 1. Always create file with component name 
 // 2. Export component as default export 
@@ -51,3 +54,9 @@
 // Conditional Render - Redering a react component or html element based on a value
 // 1. {props.completed ? <span>completed</span> : <></>}
 // 2. {props.completed && <span>completed</span>}
+
+// Referential Equality - Reference types such as functions, objects, arrays are different if the reference is different
+
+// useMemo - value
+// useCallback - function
+// memo - component

@@ -13,7 +13,9 @@ const Display = React.memo((props) => {
 export default function Todo() {
     const [tasks, setTasks] = React.useState([]);
     const [count, setCount] = React.useState(0);
-    
+    // const [filteredTasks, setFilteredTasks] = React.useState([]);
+    const [filter, setFilter] = React.useState(null); // true - completed, false - not completed, null - all
+
     // React.useEffect(() => {
     //     value = timeTakingFuntion(count);
     // }, [count]);
@@ -22,7 +24,7 @@ export default function Todo() {
         return timeTakingFuntion(count);
     }, [count]);
 
-    function countPendingTodo() {
+    const countPendingTodo = React.useCallback(() => {
         let ct = 0;
         tasks.forEach(task => {
             if(!task.completed) {
@@ -30,7 +32,7 @@ export default function Todo() {
             }
         })
         return ct;
-    }
+    }, [tasks]);
 
     React.useEffect(() => {
         let t = localStorage.getItem('tasks');
@@ -40,6 +42,7 @@ export default function Todo() {
 
     React.useEffect(() => {
         localStorage.setItem('tasks', JSON.stringify(tasks));
+        // setFilteredTasks([...tasks]);
     }, [tasks]);
 
     const addTask = React.useCallback((task) => {
@@ -75,6 +78,35 @@ export default function Todo() {
         setCount((count) => count + 1);
     }
 
+    function handleFilterCompleted() {
+        // const completedTasks = [];
+
+        // for(let i = 0; i < tasks.length; i = i + 1) {
+        //     if(tasks[i].completed) {
+        //         completedTasks.push(tasks[i]);
+        //     }
+        // }
+        // setFilteredTasks(completedTasks);
+        setFilter(true);
+    }
+
+    function handleFilterNotCompleted() {
+        // const notCompletedTasks = [];
+
+        // for(let i = 0; i < tasks.length; i = i + 1) {
+        //     if(!tasks[i].completed) {
+        //         notCompletedTasks.push(tasks[i]);
+        //     }
+        // }
+        // setFilteredTasks(notCompletedTasks);
+        setFilter(false);
+    }
+
+    function handleFilterReset() {
+        // setFilteredTasks([...tasks]);
+        setFilter(null);
+    }
+
     return (
         <div className="todo-container">
             <div className="create-todo">
@@ -83,7 +115,12 @@ export default function Todo() {
             </div>
             <div className="pending-todo">
                 <h2>Pending Todos {countPendingTodo()}</h2>
-                {tasks.map((task, index) => <Task {...task} key={index} index={index} updateTask={updateTask} removeTask={removeTask}/> )}
+                <span>Filter    </span>
+                <button onClick={handleFilterCompleted}>Completed</button>
+                <button onClick={handleFilterNotCompleted}>Not Completed</button>
+                <button onClick={handleFilterReset}>Reset</button>
+                {tasks.map((task, index) => (filter === null || filter === task.completed) ? <Task {...task} key={index} index={index} updateTask={updateTask} removeTask={removeTask}/> : <></> )}
+                <CreateTask addTask={addTask}/>
             </div>
             <Display count={count}></Display>
         </div>
