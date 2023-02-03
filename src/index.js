@@ -1,4 +1,6 @@
 import ReactDOM from 'react-dom/client';
+// import ContextComp, { Comp5 } from './ContextComp';
+// import ReducerComp from './ReducerComp';
 // import Todo from './TodoFuncComp/Todo';
 
 // import Head from './Head';
@@ -7,7 +9,8 @@ import ReactDOM from 'react-dom/client';
 // import Counter, { AutoCounter, AutoCounter2 } from './Counter';
 // import Effect from './Effect';
 // import Class1 from './Class1';
-import RefComp from './RefComp';
+// import RefComp from './RefComp';
+import RouteApp from './Routing';
 
 // function Button(props) {  
 //   console.log(props);
@@ -35,7 +38,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <Todo></Todo>
   // <Comp1></Comp1>
-  <RefComp/>
+  // <RefComp/>
+  // <ReducerComp/>
+  // <>
+  //   <ContextComp/>
+  //   <Comp5/>
+  // </>
+  <RouteApp/>
 );
 
 // {/* <Head></Head>
